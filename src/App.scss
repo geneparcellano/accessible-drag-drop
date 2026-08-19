@@ -9,7 +9,6 @@
 	}
 
 	.subtitle {
-		color: var(--text);
 		margin-bottom: 40px;
 	}
 }
@@ -34,7 +33,7 @@
 	border-radius: 10px;
 	cursor: grab;
 	user-select: none;
-	transition: box-shadow 0.15s, transform 0.15s;
+	transition: box-shadow 0.15s;
 
 	&:hover {
 		box-shadow: var(--shadow);
@@ -48,7 +47,8 @@
 		opacity: 0.4;
 	}
 
-	> span {
+	.drag-label,
+	.drag-index {
 		pointer-events: none;
 	}
 }
@@ -68,7 +68,7 @@
 	line-height: 1;
 	cursor: grab;
 	opacity: 0.4;
-	transition: opacity 0.15s, border-color 0.15s;
+	transition: opacity 0.15s;
 
 	&:hover {
 		opacity: 1;
@@ -79,7 +79,6 @@
 		outline: 2px solid var(--accent);
 		outline-offset: 2px;
 	}
-
 }
 
 .drag-label {
@@ -94,16 +93,4 @@
 	font-family: var(--mono);
 	min-width: 20px;
 	text-align: right;
-}
-
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border: 0;
 }
