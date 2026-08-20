@@ -107,10 +107,17 @@ export default function App() {
 						onDragEnd={handleDragEnd}
 						onDragOver={preventDragOver}
 					>
+						{/* role="spinbutton" makes screen readers switch to focus mode,
+						    so arrow keys reach the app instead of navigating the page */}
 						<button
 							className="drag-handle-btn"
 							data-index={index}
-							aria-label={`${item.label}, position ${index + 1} of ${items.length}`}
+							role="spinbutton"
+							aria-label={item.label}
+							aria-valuenow={index + 1}
+							aria-valuemin={1}
+							aria-valuemax={items.length}
+							aria-valuetext={`Position ${index + 1} of ${items.length}`}
 							aria-describedby="reorder-hint"
 						>
 							<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
