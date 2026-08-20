@@ -69,9 +69,11 @@ export default function App() {
 	function handleKeyDown(e: React.KeyboardEvent<HTMLButtonElement>, index: number) {
 		if (e.key === 'ArrowUp') {
 			e.preventDefault()
+			e.stopPropagation()
 			if (index > 0) moveItem(index, 'up')
 		} else if (e.key === 'ArrowDown') {
 			e.preventDefault()
+			e.stopPropagation()
 			if (index < items.length - 1) moveItem(index, 'down')
 		}
 	}
@@ -107,7 +109,14 @@ export default function App() {
 							aria-describedby="reorder-hint"
 							onKeyDown={e => handleKeyDown(e, index)}
 						>
-							<span aria-hidden="true">⠿</span>
+							<svg aria-hidden="true" width="10" height="16" viewBox="0 0 10 16" fill="currentColor">
+								<circle cx="2" cy="3" r="1.5"/>
+								<circle cx="8" cy="3" r="1.5"/>
+								<circle cx="2" cy="8" r="1.5"/>
+								<circle cx="8" cy="8" r="1.5"/>
+								<circle cx="2" cy="13" r="1.5"/>
+								<circle cx="8" cy="13" r="1.5"/>
+							</svg>
 						</button>
 						<span className="drag-label">{item.label}</span>
 						<span className="drag-index base">{index + 1}</span>
