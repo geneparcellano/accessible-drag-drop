@@ -31,16 +31,11 @@
 	padding: 12px 20px 12px 12px;
 	background: var(--social-bg);
 	border-radius: 10px;
-	cursor: grab;
 	user-select: none;
 	transition: box-shadow 0.15s;
 
 	&:hover {
 		box-shadow: var(--shadow);
-	}
-
-	&:active {
-		cursor: grabbing;
 	}
 
 	&.is-dragging {

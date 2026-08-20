@@ -97,16 +97,16 @@ export default function App() {
 					<li
 						key={item.id}
 						className={`drag-item base${draggingId === item.id ? ' is-dragging' : ''}`}
-						draggable
-						onDragStart={() => handleDragStart(index, item.id)}
 						onDragEnter={() => handleDragEnter(index)}
-						onDragEnd={handleDragEnd}
 						onDragOver={preventDragOver}
 					>
 						<button
 							className="drag-handle-btn"
 							aria-label={`${item.label}, position ${index + 1} of ${items.length}`}
 							aria-describedby="reorder-hint"
+							draggable
+							onDragStart={() => handleDragStart(index, item.id)}
+							onDragEnd={handleDragEnd}
 							onKeyDown={e => handleKeyDown(e, index)}
 						>
 							<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
