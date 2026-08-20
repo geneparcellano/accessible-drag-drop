@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './App.scss'
 
 interface Item {
@@ -21,6 +21,34 @@ export default function App() {
 	const [draggingId, setDraggingId] = useState<number | null>(null)
 	const [liveMessage, setLiveMessage] = useState<string>('')
 	const dragIndex = useRef<number | null>(null)
+	const itemsRef = useRef<Item[]>(INITIAL_ITEMS)
+
+	useEffect(() => { itemsRef.current = items }, [items])
+
+	// Capture-phase listener fires before the browser's draggable machinery,
+	// fixing arrow key interception on Windows Chrome/Edge.
+	useEffect(() => {
+		function onKeyDown(e: KeyboardEvent) {
+			if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return
+			const btn = e.target as HTMLElement
+			if (!btn.classList.contains('drag-handle-btn')) return
+			const index = parseInt(btn.dataset.index ?? '-1', 10)
+			if (index < 0) return
+			e.preventDefault()
+			e.stopPropagation()
+			const current = itemsRef.current
+			const targetIndex = e.key === 'ArrowUp' ? index - 1 : index + 1
+			if (targetIndex < 0 || targetIndex >= current.length) return
+			const label = current[index].label
+			const next = [...current]
+			const [moved] = next.splice(index, 1)
+			next.splice(targetIndex, 0, moved)
+			setItems(next)
+			setLiveMessage(`${label} moved to position ${targetIndex + 1} of ${current.length}.`)
+		}
+		document.addEventListener('keydown', onKeyDown, true)
+		return () => document.removeEventListener('keydown', onKeyDown, true)
+	}, [])
 
 	function handleDragStart(index: number, id: number) {
 		dragIndex.current = index
@@ -54,30 +82,6 @@ export default function App() {
 		setDraggingId(null)
 	}
 
-	function moveItem(index: number, direction: 'up' | 'down') {
-		const targetIndex = direction === 'up' ? index - 1 : index + 1
-		const label = items[index].label
-		setItems(prev => {
-			const next = [...prev]
-			const [moved] = next.splice(index, 1)
-			next.splice(targetIndex, 0, moved)
-			return next
-		})
-		setLiveMessage(`${label} moved to position ${targetIndex + 1} of ${items.length}.`)
-	}
-
-	function handleKeyDown(e: React.KeyboardEvent<HTMLButtonElement>, index: number) {
-		if (e.key === 'ArrowUp') {
-			e.preventDefault()
-			e.stopPropagation()
-			if (index > 0) moveItem(index, 'up')
-		} else if (e.key === 'ArrowDown') {
-			e.preventDefault()
-			e.stopPropagation()
-			if (index < items.length - 1) moveItem(index, 'down')
-		}
-	}
-
 	return (
 		<main className="app">
 			<h1 className="title">Accessible Drag &amp; Drop</h1>
@@ -97,17 +101,17 @@ export default function App() {
 					<li
 						key={item.id}
 						className={`drag-item base${draggingId === item.id ? ' is-dragging' : ''}`}
+						draggable
+						onDragStart={() => handleDragStart(index, item.id)}
 						onDragEnter={() => handleDragEnter(index)}
+						onDragEnd={handleDragEnd}
 						onDragOver={preventDragOver}
 					>
 						<button
 							className="drag-handle-btn"
+							data-index={index}
 							aria-label={`${item.label}, position ${index + 1} of ${items.length}`}
 							aria-describedby="reorder-hint"
-							draggable
-							onDragStart={() => handleDragStart(index, item.id)}
-							onDragEnd={handleDragEnd}
-							onKeyDown={e => handleKeyDown(e, index)}
 						>
 							<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
 								<rect x="2" y="3" width="12" height="2" rx="1"/>
