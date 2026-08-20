@@ -109,13 +109,10 @@ export default function App() {
 							aria-describedby="reorder-hint"
 							onKeyDown={e => handleKeyDown(e, index)}
 						>
-							<svg aria-hidden="true" width="10" height="16" viewBox="0 0 10 16" fill="currentColor">
-								<circle cx="2" cy="3" r="1.5"/>
-								<circle cx="8" cy="3" r="1.5"/>
-								<circle cx="2" cy="8" r="1.5"/>
-								<circle cx="8" cy="8" r="1.5"/>
-								<circle cx="2" cy="13" r="1.5"/>
-								<circle cx="8" cy="13" r="1.5"/>
+							<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+								<rect x="2" y="3" width="12" height="2" rx="1"/>
+								<rect x="2" y="7" width="12" height="2" rx="1"/>
+								<rect x="2" y="11" width="12" height="2" rx="1"/>
 							</svg>
 						</button>
 						<span className="drag-label">{item.label}</span>
