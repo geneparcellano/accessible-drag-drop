@@ -105,7 +105,12 @@ export default function App() {
 
 	function handleDragStart(index: number, id: number) {
 		dragIndex.current = index
-		setDraggingId(id)
+		// Deferred: some browsers (Chrome on Windows) suppress repaints of the
+		// underlying page until their native drag loop settles, so a style
+		// change applied synchronously in dragstart never becomes visible
+		// until drop. A 0ms delay lets the drag ghost snapshot first, then
+		// the state change lands on the next tick, once repaints resume.
+		setTimeout(() => setDraggingId(id), 0)
 	}
 
 	function handleDragEnter(index: number) {
