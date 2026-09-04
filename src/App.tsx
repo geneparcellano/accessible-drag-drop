@@ -50,9 +50,21 @@ function DragItem({ item, index, total, isDragging, onDragStart, onDragEnter, on
 		<li
 			className={`drag-item base${isDragging ? ' is-dragging' : ''}`}
 			draggable
-			onDragStart={() => onDragStart(index, item.id)}
+			// Toggle the class on the DOM node directly, not just via the
+			// isDragging prop: Chrome on Windows freezes the actively-dragged
+			// node's own paint until drop, so a style change that only takes
+			// effect through React's next render can lose the race. Doing it
+			// here too means it lands the instant dragstart fires, before
+			// that freeze can take hold.
+			onDragStart={(e) => {
+				e.currentTarget.classList.add('is-dragging')
+				onDragStart(index, item.id)
+			}}
 			onDragEnter={() => onDragEnter(index)}
-			onDragEnd={onDragEnd}
+			onDragEnd={(e) => {
+				e.currentTarget.classList.remove('is-dragging')
+				onDragEnd()
+			}}
 			onDragOver={preventDragOver}
 		>
 			{/* role="spinbutton" makes screen readers switch to focus mode,
@@ -105,12 +117,7 @@ export default function App() {
 
 	function handleDragStart(index: number, id: number) {
 		dragIndex.current = index
-		// Deferred: some browsers (Chrome on Windows) suppress repaints of the
-		// underlying page until their native drag loop settles, so a style
-		// change applied synchronously in dragstart never becomes visible
-		// until drop. A 0ms delay lets the drag ghost snapshot first, then
-		// the state change lands on the next tick, once repaints resume.
-		setTimeout(() => setDraggingId(id), 0)
+		setDraggingId(id)
 	}
 
 	function handleDragEnter(index: number) {
