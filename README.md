@@ -2,7 +2,11 @@
 
 A reorderable list built with React + TypeScript that works for both mouse and keyboard/screen reader users.
 
-Each row has a drag handle button. Pointer users drag rows to reorder them; keyboard users focus a handle and press Arrow Up / Arrow Down to move that row. The handle uses `role="spinbutton"` with `aria-valuenow`/`aria-valuetext` so screen readers switch to focus mode and pass arrow keys to the app, and every move is announced through an `aria-live` status region.
+Each row has a drag handle button:
+
+- **Pointer users** drag a row's handle to reorder it.
+- **Keyboard users** focus a handle, then press Arrow Up / Arrow Down to move that row.
+- **Screen reader users** get a handle with `role="spinbutton"` and `aria-valuenow`/`aria-valuetext`, so the reader switches to focus mode and passes arrow keys through to the app; every move is also announced via an `aria-live` status region.
 
 ## Setup
 
