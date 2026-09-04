@@ -1,7 +1,7 @@
 // The dark palette lives in a mixin so the OS preference and the manual
 // override can both apply it without duplicating the token values.
 @mixin dark-theme {
-	--text: #F69268;
+	--text: var(--title-color);
 	--text-h: #F9F7F6;
 	--bg: linear-gradient(180deg, #102030 0%, #182F44 100%);
 	--accent: #E9E4DF;
