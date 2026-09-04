@@ -54,10 +54,22 @@
 
 	// A solid, purpose-picked color rather than opacity: opacity would let
 	// the page background show through and mute/desaturate the row instead
-	// of reading as a genuinely darker version of it.
+	// of reading as a genuinely darker version of it. This background is
+	// deliberately darker than --row-hover-bg (not just different) so
+	// pressing a hovered row darkens further instead of flashing lighter.
 	&:active,
 	&.is-dragging {
 		background: var(--row-active-bg);
+
+		.drag-label,
+		.drag-index,
+		.drag-handle-btn {
+			color: var(--row-active-fg);
+		}
+
+		.drag-handle-btn:focus-visible {
+			outline-color: var(--row-active-fg);
+		}
 	}
 
 	&:active {

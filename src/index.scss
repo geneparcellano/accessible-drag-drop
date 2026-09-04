@@ -11,6 +11,7 @@
 	--row-hover-shadow: none;
 	--row-hover-fg: var(--text-h);
 	--row-active-bg: #102030;
+	--row-active-fg: var(--row-hover-fg);
 	--social-bg: #203F58;
 	--title-color: #F9F7F6;
 	--shadow:
@@ -30,7 +31,8 @@
 	--row-hover-bg: #C13C15;
 	--row-hover-shadow: none;
 	--row-hover-fg: #FFFFFF;
-	--row-active-bg: #F3733D;
+	--row-active-bg: #9C3011;
+	--row-active-fg: var(--row-hover-fg);
 	--social-bg: #F69268;
 	--title-color: #102030;
 	--shadow:
