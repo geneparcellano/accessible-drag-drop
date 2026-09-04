@@ -33,10 +33,16 @@
 	border-radius: 10px;
 	cursor: grab;
 	user-select: none;
-	transition: box-shadow 0.15s;
+	transition: background-color 0.15s, box-shadow 0.15s;
 
 	&:hover {
-		box-shadow: var(--shadow);
+		background: var(--row-hover-bg);
+		box-shadow: var(--row-hover-shadow);
+
+		.drag-index,
+		.drag-handle-btn {
+			color: var(--row-hover-fg);
+		}
 	}
 
 	&:active {
@@ -63,7 +69,7 @@
 	background: transparent;
 	border: 1px solid transparent;
 	border-radius: 4px;
-	color: var(--accent);
+	color: var(--marker);
 	cursor: grab;
 	opacity: 0.75;
 	transition: opacity 0.15s;
@@ -86,7 +92,7 @@
 }
 
 .drag-index {
-	color: var(--accent);
+	color: var(--marker);
 	font-family: var(--mono);
 	min-width: 20px;
 	text-align: right;
