@@ -103,14 +103,12 @@
 	height: 40px;
 	padding: 0;
 	background: var(--social-bg);
-	border: 1px solid var(--border);
 	border-radius: 50%;
 	color: var(--title-color);
 	cursor: pointer;
-	transition: border-color 0.15s, box-shadow 0.15s;
+	transition: box-shadow 0.15s;
 
 	&:hover {
-		border-color: var(--accent);
 		box-shadow: var(--shadow);
 	}
 
