@@ -39,9 +39,16 @@
 		background: var(--row-hover-bg);
 		box-shadow: var(--row-hover-shadow);
 
+		.drag-label,
 		.drag-index,
 		.drag-handle-btn {
 			color: var(--row-hover-fg);
+		}
+
+		// The resting focus ring (--accent) can't clear 3:1 against the
+		// darkened hover background, so it swaps to the hover foreground too.
+		.drag-handle-btn:focus-visible {
+			outline-color: var(--row-hover-fg);
 		}
 	}
 
@@ -51,6 +58,7 @@
 
 	&.is-dragging {
 		opacity: 0.5;
+		filter: brightness(0.85);
 	}
 
 	.drag-label,
