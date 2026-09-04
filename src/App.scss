@@ -66,9 +66,9 @@
 	background: transparent;
 	border: 1px solid transparent;
 	border-radius: 4px;
-	color: var(--title-color);
+	color: var(--accent);
 	cursor: grab;
-	opacity: 0.6;
+	opacity: 0.75;
 	transition: opacity 0.15s;
 
 	&:hover {

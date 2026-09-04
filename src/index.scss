@@ -1,30 +1,30 @@
 // The dark palette lives in a mixin so the OS preference and the manual
 // override can both apply it without duplicating the token values.
 @mixin dark-theme {
-	--text: #CFDBD5;
-	--text-h: #E8EDDF;
-	--bg: #242423;
-	--border: #CFDBD5;
-	--accent: #FF7247;
-	--social-bg: #333533;
-	--title-color: #E8EDDF;
+	--text: #E9E4DF;
+	--text-h: #F9F7F6;
+	--bg: linear-gradient(180deg, #0E1A2E 0%, #16283F 55%, #F0C7A9 100%);
+	--border: #E9E4DF;
+	--accent: #E9E4DF;
+	--social-bg: #35637C;
+	--title-color: #F9F7F6;
 	--shadow:
-		rgba(0, 0, 0, 0.5) 0 10px 15px -3px, rgba(245, 203, 92, 0.22) 0 4px 20px -2px;
+		rgba(0, 0, 0, 0.5) 0 10px 15px -3px, rgba(233, 228, 223, 0.18) 0 4px 20px -2px;
 	color-scheme: dark;
 }
 
 :root {
 	--content-width: 1126px;
 
-	--text: #333533;
-	--text-h: #242423;
-	--bg: #CFDBD5;
-	--border: #333533;
-	--accent: #B83A08;
-	--social-bg: #E8EDDF;
-	--title-color: #242423;
+	--text: #203F58;
+	--text-h: #102030;
+	--bg: linear-gradient(180deg, #E7EAEE 0%, #F6DCCE 55%, #C9CCD2 100%);
+	--border: #102030;
+	--accent: #203F58;
+	--social-bg: #F69268;
+	--title-color: #102030;
 	--shadow:
-		rgba(36, 36, 35, 0.12) 0 10px 15px -3px, rgba(245, 203, 92, 0.35) 0 4px 20px -2px;
+		rgba(16, 32, 48, 0.15) 0 10px 15px -3px, rgba(32, 63, 88, 0.2) 0 4px 20px -2px;
 
 	--sans: 'Roboto', system-ui, sans-serif;
 	--mono: ui-monospace, Consolas, monospace;
