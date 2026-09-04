@@ -8,11 +8,11 @@ interface Item {
 }
 
 const INITIAL_ITEMS: Item[] = [
-	{ id: 1, label: 'Design system tokens' },
-	{ id: 2, label: 'Component library' },
-	{ id: 3, label: 'Accessibility audit' },
-	{ id: 4, label: 'User testing' },
-	{ id: 5, label: 'Documentation' },
+	{ id: 1, label: 'Homer Simpson' },
+	{ id: 2, label: 'Marge Simpson' },
+	{ id: 3, label: 'Bart Simpson' },
+	{ id: 4, label: 'Lisa Simpson' },
+	{ id: 5, label: 'Maggie Simpson' },
 ]
 
 const preventDragOver = (e: React.DragEvent) => e.preventDefault()
