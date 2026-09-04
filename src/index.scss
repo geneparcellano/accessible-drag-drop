@@ -1,19 +1,33 @@
-:root {
-	--content-width: 1126px;
-
+// The dark palette lives in a mixin so the OS preference and the manual
+// override can both apply it without duplicating the token values.
+@mixin dark-theme {
 	--text: #d3c9f7;
 	--text-h: #ffffff;
 	--bg: #1a1040;
 	--border: #9d8ce8;
 	--accent: #3ee9e0;
 	--social-bg: #2f2170;
+	--title-color: #ffffff;
 	--shadow:
 		rgba(0, 0, 0, 0.35) 0 10px 15px -3px, rgba(62, 233, 224, 0.18) 0 4px 20px -2px;
+	color-scheme: dark;
+}
+
+:root {
+	--content-width: 1126px;
+
+	--text: #4c4370;
+	--text-h: #17103a;
+	--bg: #f4f1fd;
+	--border: #6f5fc9;
+	--accent: #0f766e;
+	--social-bg: #ffffff;
+	--title-color: #17103a;
+	--shadow:
+		rgba(23, 16, 58, 0.12) 0 10px 15px -3px, rgba(15, 118, 110, 0.15) 0 4px 20px -2px;
 
 	--sans: 'Roboto', system-ui, sans-serif;
 	--mono: ui-monospace, Consolas, monospace;
-
-	--title-color: #fff;
 
 	font: 18px/145% var(--sans);
 	letter-spacing: 0.18px;
@@ -30,20 +44,24 @@
 	}
 }
 
+// Follow the OS, unless the toggle has explicitly asked for light.
 @media (prefers-color-scheme: dark) {
-	:root {
-		--text: #c4b8f0;
-		--text-h: #ffffff;
-		--bg: #0d0726;
-		--border: #8b7ae0;
-		--accent: #4ff0d6;
-		--social-bg: #1f1550;
-		--shadow:
-			rgba(0, 0, 0, 0.5) 0 10px 15px -3px, rgba(79, 240, 214, 0.22) 0 4px 20px -2px;
+	:root:not([data-theme='light']) {
+		@include dark-theme;
 	}
 }
 
+// An explicit choice from the toggle wins in both directions.
+:root[data-theme='dark'] {
+	@include dark-theme;
+}
+
+:root[data-theme='light'] {
+	color-scheme: light;
+}
+
 #root {
+	position: relative;
 	width: var(--content-width);
 	max-width: 100%;
 	margin: 0 auto;

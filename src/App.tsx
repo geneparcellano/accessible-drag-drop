@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import ThemeToggle from './ThemeToggle'
 import './App.scss'
 
 interface Item {
@@ -126,6 +127,7 @@ export default function App() {
 
 	return (
 		<main className="app">
+			<ThemeToggle />
 			<h1 className="title">Accessible Drag &amp; Drop</h1>
 			<p className="subtitle base">Drag items to reorder</p>
 

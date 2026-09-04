@@ -8,6 +8,13 @@
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>accessible-drag-drop</title>
+		<script>
+			// Apply a stored theme before first paint so the page can't flash the wrong one.
+			try {
+				var stored = localStorage.getItem('theme')
+				if (stored === 'light' || stored === 'dark') document.documentElement.dataset.theme = stored
+			} catch (e) {}
+		</script>
 	</head>
 	<body>
 		<div id="root"></div>
