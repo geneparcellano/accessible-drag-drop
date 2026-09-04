@@ -7,10 +7,11 @@
 	--border: #E9E4DF;
 	--accent: #E9E4DF;
 	--marker: #F69268;
-	--row-hover-bg: var(--social-bg);
-	--row-hover-shadow: var(--shadow);
-	--row-hover-fg: var(--marker);
-	--social-bg: #35637C;
+	--row-hover-bg: #35637C;
+	--row-hover-shadow: none;
+	--row-hover-fg: var(--text-h);
+	--row-active-bg: #102030;
+	--social-bg: #203F58;
 	--title-color: #F9F7F6;
 	--shadow:
 		rgba(0, 0, 0, 0.5) 0 10px 15px -3px, rgba(233, 228, 223, 0.18) 0 4px 20px -2px;
@@ -29,6 +30,7 @@
 	--row-hover-bg: #C13C15;
 	--row-hover-shadow: none;
 	--row-hover-fg: #FFFFFF;
+	--row-active-bg: #F3733D;
 	--social-bg: #F69268;
 	--title-color: #102030;
 	--shadow:
