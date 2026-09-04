@@ -2,6 +2,8 @@
 
 A reorderable list built with React + TypeScript that works for both mouse and keyboard/screen reader users.
 
+**[Try it live](https://geneparcellano.github.io/accessible-drag-drop/)**
+
 Each row has a drag handle button:
 
 - **Pointer users** drag a row's handle to reorder it.
