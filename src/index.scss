@@ -6,7 +6,7 @@
 	--bg: linear-gradient(180deg, #102030 0%, #203F58 100%);
 	--border: #E9E4DF;
 	--accent: #E9E4DF;
-	--marker: #F69268;
+	--marker: var(--text-h);
 	--row-hover-bg: #35637C;
 	--row-hover-shadow: none;
 	--row-hover-fg: var(--text-h);
