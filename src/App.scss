@@ -30,15 +30,13 @@
 	gap: 8px;
 	padding: 12px 20px 12px 12px;
 	background: var(--social-bg);
-	border: 1px solid var(--border);
 	border-radius: 10px;
 	cursor: grab;
 	user-select: none;
-	transition: box-shadow 0.15s, border-color 0.15s;
+	transition: box-shadow 0.15s;
 
 	&:hover {
 		box-shadow: var(--shadow);
-		border-color: var(--accent);
 	}
 
 	&:active {
@@ -47,7 +45,6 @@
 
 	&.is-dragging {
 		opacity: 0.5;
-		border-color: var(--accent);
 	}
 
 	.drag-label,
