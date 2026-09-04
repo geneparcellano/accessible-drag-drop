@@ -25,24 +25,16 @@
 }
 
 .drag-item {
-	--row-accent: var(--accent);
 	display: flex;
 	align-items: center;
 	gap: 8px;
 	padding: 12px 20px 12px 12px;
 	background: var(--social-bg);
 	border: 1px solid var(--border);
-	border-left: 4px solid var(--row-accent);
 	border-radius: 10px;
 	cursor: grab;
 	user-select: none;
 	transition: box-shadow 0.15s, border-color 0.15s;
-
-	// Cycle the three brand accents down the list so the reorder order reads
-	// visually, not just numerically. Focus and hover stay on --accent alone
-	// (below) so the keyboard-focus indicator never changes hue.
-	&:nth-child(3n+2) { --row-accent: var(--accent-2); }
-	&:nth-child(3n+3) { --row-accent: var(--accent-3); }
 
 	&:hover {
 		box-shadow: var(--shadow);
@@ -56,7 +48,6 @@
 	&.is-dragging {
 		opacity: 0.5;
 		border-color: var(--accent);
-		--row-accent: var(--accent);
 	}
 
 	.drag-label,
@@ -75,9 +66,9 @@
 	background: transparent;
 	border: 1px solid transparent;
 	border-radius: 4px;
-	color: var(--row-accent);
+	color: var(--title-color);
 	cursor: grab;
-	opacity: 0.85;
+	opacity: 0.6;
 	transition: opacity 0.15s;
 
 	&:hover {
@@ -98,7 +89,7 @@
 }
 
 .drag-index {
-	color: var(--row-accent);
+	color: var(--accent);
 	font-family: var(--mono);
 	min-width: 20px;
 	text-align: right;
