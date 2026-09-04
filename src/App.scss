@@ -52,13 +52,16 @@
 		}
 	}
 
-	&:active {
-		cursor: grabbing;
+	// A solid, purpose-picked color rather than opacity: opacity would let
+	// the page background show through and mute/desaturate the row instead
+	// of reading as a genuinely darker version of it.
+	&:active,
+	&.is-dragging {
+		background: var(--row-active-bg);
 	}
 
-	&.is-dragging {
-		opacity: 0.5;
-		filter: brightness(0.85);
+	&:active {
+		cursor: grabbing;
 	}
 
 	.drag-label,
